@@ -19,8 +19,7 @@ public class Test {
 		System.out.println(dir);
 //		System.out.println("Position de gauche :"+dir.gauche());
 //		System.out.println("Position de droite :"+dir.droite());
-		Pelouse pelouse = new Pelouse();
-		pelouse.initialiserPelouse(5, 5);
+		Pelouse pelouse = new Pelouse(5, 5);
 		Position pos = new Position(1, 2, dir);
 //		System.out.println(pos.peutAvancer(pelouse));
 		

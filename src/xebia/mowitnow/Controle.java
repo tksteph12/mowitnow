@@ -9,6 +9,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import mowitnow.data.Pelouse;
+import mowitnow.data.Position;
 import mowitnow.data.Tondeuse;
 import mowitnow.exception.InvalidDirectionException;
 import mowitnow.exception.InvalidInstructionException;
@@ -20,23 +22,26 @@ import mowitnow.utils.Helpers;
  *
  */
 public class Controle {
-	private Map<Tondeuse,String> tondeuses;
 	
-	public  Map<Tondeuse,String> parcourirFichier(File input) throws FileNotFoundException,IOException{
-		tondeuses =  Helpers.getAllTondeusesFromFile(input);
-		return tondeuses;
+	/**
+	 * 
+	 * @param instructions : Liste d'instructions 
+	 * @throws InvalidInstructionException 
+	 */
+	public void executerTondeuses(List<String> instructions) throws InvalidInstructionException{
+		assert((instructions.size()%2)==1):"the number of lines in the initial file should be odd";
+		  int nbTondeuses = (instructions.size()-1)/2;
+		  //La premiere case de la liste represente les limites de la pelouse.
+		  Pelouse pelouse = new Pelouse(instructions.get(0));
+		  for(int k=0; k <nbTondeuses;k++){
+			  Position position = new Position(instructions.get(2*k+1));
+			  Tondeuse tondeuse = new Tondeuse(position, pelouse);
+			  tondeuse.executerSequence(Helpers.convertSequenceToList(instructions.get(2*k+2)));
+		  }
+		
 	}
 	
-	public void executer() throws InvalidPositionException,InvalidDirectionException,InvalidInstructionException{
-		Set keys = tondeuses.keySet();
-		Iterator iterator = keys.iterator();
-		int i =0;
-		while(iterator.hasNext()){
-			System.out.println("Execution tondeuse no : "+ i++);
-			Tondeuse tondeuse = (Tondeuse) iterator.next();
-			String instructions = tondeuses.get(tondeuse);
-			List<Character> sequenceTondeuse = Helpers.convertSequenceToList(instructions);
-			tondeuse.executerSequence(sequenceTondeuse);
-		}
-	}
+	
+	
+	
 }
