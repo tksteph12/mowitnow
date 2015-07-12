@@ -7,6 +7,7 @@ import java.util.List;
 import mowitnow.data.Position;
 import mowitnow.exception.FichierMalFormeException;
 import mowitnow.exception.InvalidInstructionException;
+import mowitnow.exception.InvalidPositionException;
 import mowitnow.utils.Helpers;
 
 /**
@@ -21,18 +22,16 @@ public class Launcher {
 	public static void main(String[] args){
 		try {
 			List<String> instructions = Helpers.analysePath("src/ressources/tondeuses.txt");
-			System.out.println(instructions);
 			Controle controle = new Controle();
 			controle.executerTondeuses(instructions);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println(e.getMessage());
 		} catch (FichierMalFormeException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println(e.getMessage());
 		} catch (InvalidInstructionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println(e.getMessage());
+		} catch (InvalidPositionException e) {
+			System.out.println(e.getMessage());
 		}
 	}
 	

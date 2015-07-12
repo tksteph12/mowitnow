@@ -35,16 +35,16 @@ public class Tondeuse {
 	}
 	
 
-	public Position executerSequence(List<Character> sequence) throws InvalidInstructionException{//Invalid Sequence Exception
+	public Position executerSequence(List<Character> sequence) throws InvalidInstructionException{
 		for(Character seq : sequence) {
 			if(!Instructions.instructions.containsKey(seq.toString())){
-				throw new InvalidInstructionException(seq + " Is not a valid instruction");
+				throw new InvalidInstructionException(seq + " N'est pas une instruction valide");
 			}
 			deplacerTondeuse(seq);
-			System.out.println(position.getX() + " "+ position.getY()+" "+ position.getDirection().getOrientation());
+//			System.out.println(position.getX() + " "+ position.getY()+" "+ position.getDirection().getOrientation());
 
 		}
 		return position;
 	}
 	
-	}
+}

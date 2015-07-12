@@ -40,7 +40,15 @@ public class Helpers {
 		return null;
 	}
 	
-	
+	/**
+	 * 
+	 * @param filePath chemin relatif du fichier source alimentant le programme
+	 * @return Liste contenant en première position les limites de la pelouse, et les tondeuses sur les autres positions
+	 * 		   pour k>=0 Position 2k+1 ==> instruction pour la position initiale de la tondeuse
+	 * 					 Position 2k+2 ==> instructions poru le déplacement de la tondeuse en position précedente  
+	 * @throws IOException
+	 * @throws FichierMalFormeException
+	 */
 	public static List<String> analysePath(String filePath) throws IOException, FichierMalFormeException{
 		List<String> instructions = new ArrayList<>();
 		File instFile = new File(filePath);
@@ -51,6 +59,9 @@ public class Helpers {
 		while((line=buffer.readLine())!=null){
 			if(!(line.trim().isEmpty()))
 				instructions.add(line);
+		}
+		if(!((instructions.size()%2)==1)){
+			throw new FichierMalFormeException(" Fichier Malformé: Le fichier doit contenir un nombre Impair de lignes");
 		}
 		return instructions;
 	}

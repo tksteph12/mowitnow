@@ -30,7 +30,7 @@ public final class Direction{
 			directions = Collections.unmodifiableMap(myDirections);
 	    }
 	
-	Direction(char dir){
+	public Direction(char dir){
 		this.orientation = dir;
 		
 		switch (orientation.toString()){
