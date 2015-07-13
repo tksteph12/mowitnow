@@ -27,7 +27,7 @@ Lorsqu'une tondeuse achève une série d'instruction, elle communique sa position 
 Concevoir et écrire un programme s'exécutant sur une JVM = 1.7 ou un serveur node.js, et implémentant la spécification ci-dessus et passant le test ci-après
 
 ##TEST
-Le fichier suivant est fourni en entrée :
+Le fichier suivant est fourni en entrée :  
 5 5
 
 1 2 N
