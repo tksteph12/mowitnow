@@ -35,7 +35,7 @@ GAGAGAGAA
 3 3 E  
 AADAADADDA
 
-On attend le résultat suivant (position finale des tondeuses) :
+On attend le résultat suivant (position finale des tondeuses) :  
 1 3 N  
 5 1 E  
 
